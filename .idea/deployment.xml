@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Wopr">
+    <serverData>
+      <paths name="Wopr">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/campus04/ajdavid/public_html/classdb/HW9/Forum2" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

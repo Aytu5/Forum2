@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a8632d7d-88ef-4691-bf4b-4ff8acfa257e" name="Wopr" url="http://classdb.it.mtu.edu/~ajdavid/HW9/Forum2/">
+        <fileTransfer host="wopr.csl.mtu.edu" port="22" accessType="SFTP" password="dfd3dfc5dfc6dfc5dff9dfc6dfc5dfdedfc2df9edf98df9a" username="ajdavid">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
