@@ -29,7 +29,7 @@
     $resultSet = $stmnt->fetchAll();
     if(sizeof($resultSet) != 1){
         echo "account does not exist or password is incorrect";
-        $conn->rollBack();
+        //$conn->rollBack();
         die();
     }
     $salt = $resultSet[0]["salt"];
