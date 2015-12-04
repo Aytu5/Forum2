@@ -8,12 +8,7 @@
         .module("forum")
         .controller("index", index);
 
-
     function index(){
         var vm = this;
-        vm.test = "TEST";
-        this.test2 = "test2";
-        vm.boolean = true;
-        console.log("made it to the end of controller");
     }
 })();

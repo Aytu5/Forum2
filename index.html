@@ -7,7 +7,7 @@
 
 </head>
 
-<body ng-controller="index">
+<body ng-controller="index as vm">
     <nav class="navbar navbar-default">
         <div class="container">
 
@@ -16,7 +16,7 @@
                     <li><a>stuff2</a></li>
                 </ul>
 
-                <form ng-if="!vm.authenticated" class="navbar-form navbar-right" action="api/login.php" method="post">
+                <form ng-if="!authenticated" class="navbar-form navbar-right" action="api/login.php" method="post">
                     <div class="form-group">
                         <input type="text" class="form-control" name="username" placeholder="username" />
                         <input type="password" class="form-control" name="password" placeholder="password" />
@@ -24,19 +24,13 @@
                     </div>
                 </form>
 
-                <form ng-if="vm.authenticated" class="navbar-form navbar-right" action="_logout.php" method="get">
-                    <label>{{ vm.user }}</label>
+                <form ng-if="authenticated" class="navbar-form navbar-right" action="_logout.php" method="get">
+                    <label>{{ user }}</label>
                     <button type="submit" class="btn btn-default">logout</button>
                 </form>
         </div>
     </nav>
     <div class="container">
-        <p>{{ vm.test }}</p>
-        <p>{{ test2 }}</p>
-        <p>{{ "test 3 " }}</p>
-        <p ng-if="vm.boolean">Test 4</p>
-        <p>{{vm.boolean}}</p>
-
 
     </div>
 
