@@ -10,5 +10,6 @@
 
     function index(){
         var vm = this;
+        vm.base = "classdb.it.mtu.edu/~ajdavid/HW9/Forum2/";
     }
 })();

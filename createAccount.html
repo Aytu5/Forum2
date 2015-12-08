@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="forum">
+<head>
+    <base href="/~ajdavid/HW9/Forum2/">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <script src="scripts/jquery-2.1.4.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js" ></script>
+    <script>
+        function validateForm(){
+            var x = document.forms["createUser"]["password"].value;
+            var y = document.forms["createUser"]["passwordCheck"].value;
+            if(x != y || x == null){
+                alert("passwords must match");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body ng-controller="index as vm">
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="." target="_self">Forum</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a>stuff</a></li>
+            <li><a>stuff2</a></li>
+        </ul>
+
+        <form ng-if="!authenticated" class="navbar-form navbar-right" action="api/login.php" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" name="username" placeholder="username" />
+                <input type="password" class="form-control" name="password" placeholder="password" />
+                <input type="submit" class="btn btn-default" name="submit" value="login" />
+                <a class="btn btn-default" href="createAccount">create account</a>
+            </div>
+        </form>
+
+        <form ng-if="authenticated" class="navbar-form navbar-right" action="api/logout.php" method="get" onsubmit="validateForm()">
+            <label>{{ user }}</label>
+            <button type="submit" class="btn btn-default">logout</button>
+        </form>
+    </div>
+</nav>
+<div class="container" ng-controller="home as home">
+    <h1>create account</h1>
+    <form name="createUser" action="api/createUser.php" method="post">
+        <div class="form-group">
+            <label for="username">username: </label>
+            <input type="text" id="username" class="form-control">
+            <label for="password">password: </label>
+            <input type="password" id="password" class="form-control" >
+            <label for="passwordCheck">re-enter password:</label>
+            <input type="password" id="passwordCheck" class="form-control">
+        </div>
+    </form>
+
+</div>
+</body>
+<!-- libraries -->
+<script src="scripts/angular.js" ></script>
+<script src="scripts/angular-route.js" ></script>
+<script src="app/app.js" ></script>
+<script src="app/data.js"></script>
+<script src="app/thread.directive.js"></script>
+<script src="app/authenticator.js"></script>
+<script src="app/controller.js" ></script>
+<script src="app/config.js"></script>
+</html>

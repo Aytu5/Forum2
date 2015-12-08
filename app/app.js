@@ -5,5 +5,5 @@
     'use strict';
 
     angular
-        .module('forum', []);
+        .module('forum', ['ngRoute']);
 })();

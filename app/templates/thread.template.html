@@ -1,0 +1,7 @@
+<div class="panel panel-default">
+    <div class="panel-heading">{{ info.name }}</div>
+    <div class="panel-body">{{ info.content }}</div>
+    <div class="panel-footer">
+        <comment ng-repeat="reply in info.replies" info="reply"></comment>
+    </div>
+</div>

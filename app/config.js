@@ -9,7 +9,10 @@
         .config(configure)
         .run(runBlock);
 
-    function configure(){
+    configure.$inject = ["$locationProvider"];
+
+    function configure($locationProvider){
+        $locationProvider.html5Mode(true);
 
     }
 
@@ -19,12 +22,10 @@
         authenticator.initialize();
 
 
-        $rootScope.$on('$routeChangeSuccess', function(){
-            document.title += $route.current.title;
-
-        });
-        console.log("made it to the end of config");
-        console.log($rootScope.authenticated);
+        //$rootScope.$on('$routeChangeSuccess', function(){
+        //    document.title += $route.current.title;
+        //
+        //});
     }
 
 })();

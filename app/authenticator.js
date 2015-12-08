@@ -17,11 +17,11 @@
 
         function initialize(){
             $rootScope.authenticated = false;
-            console.log("initialize hit");
+            //console.log("initialize hit");
             data.session().then(function(response){
                 //console.log(response);
                 if(response.user){
-                    console.log("user found");
+                    //console.log("user found");
                     $rootScope.authenticated = true;
                     $rootScope.user = response.user;
                 }

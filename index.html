@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html ng-app="forum">
 <head>
+    <base href="/~ajdavid/HW9/Forum2/">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <script src="scripts/jquery-2.1.4.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js" ></script>
-
 </head>
 
 <body ng-controller="index as vm">
+
     <nav class="navbar navbar-default">
         <div class="container">
-
+            <div class="navbar-header">
+                <a class="navbar-brand" href="." target="_self">Forum</a>
+            </div>
             <ul class="nav navbar-nav">
                 <li><a>stuff</a></li>
                 <li><a>stuff2</a></li>
@@ -21,24 +24,36 @@
                     <input type="text" class="form-control" name="username" placeholder="username" />
                     <input type="password" class="form-control" name="password" placeholder="password" />
                     <input type="submit" class="btn btn-default" name="submit" value="login" />
+                    <a class="btn btn-default" href="createAccount">create account</a>
                 </div>
             </form>
 
-            <form ng-if="authenticated" class="navbar-form navbar-right" action="_logout.php" method="get">
+            <form ng-if="authenticated" class="navbar-form navbar-right" action="api/logout.php" method="get">
                 <label>{{ user }}</label>
                 <button type="submit" class="btn btn-default">logout</button>
             </form>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" ng-controller="home as home">
+        <h1>home</h1>
+        <div class="panel panel-default" ng-repeat="thread in home.threads">
+            <div class="panel-heading">
+                <a ng-href="thread?id={{ thread.id }}">{{thread.name}}</a>
+            </div>
+            <div class="panel-body">{{thread.content}}</div>
+        </div>
 
     </div>
 </body>
     <!-- libraries -->
     <script src="scripts/angular.js" ></script>
+    <script src="scripts/angular-route.js" ></script>
     <script src="app/app.js" ></script>
     <script src="app/data.js"></script>
+    <script src="app/thread.directive.js"></script>
     <script src="app/authenticator.js"></script>
+    <script src="app/controller.js" ></script>
+    <script src="app/thread.controller.js"></script>
+    <script src="app/home.controller.js"></script>
     <script src="app/config.js"></script>
-    <script src="app/controller.js"></script>
 </html>
