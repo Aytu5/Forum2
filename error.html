@@ -14,16 +14,13 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="." target="_self">Forum</a>
         </div>
-        <!--<ul class="nav navbar-nav">-->
-            <!--<li><a>stuff</a></li>-->
-            <!--<li><a>stuff2</a></li>-->
-        <!--</ul>-->
 
         <form ng-if="!authenticated" class="navbar-form navbar-right" action="api/login.php" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" name="username" placeholder="username" />
                 <input type="password" class="form-control" name="password" placeholder="password" />
                 <input type="submit" class="btn btn-default" name="submit" value="login" />
+                <a class="btn btn-default" href="createAccount">create account</a>
             </div>
         </form>
 
@@ -33,31 +30,25 @@
         </form>
     </div>
 </nav>
-<div class="container" ng-controller="thread as thread">
-    <h1>Thread {{ thread[0].id }}</h1>
-    <!--<div class="panel panel-default">-->
-        <!--<div class="panel-heading">{{thread.thread.name}}</div>-->
-        <!--<div class="panel-body">-->
-            <!--<div class="panel panel-default" ng-repeat="comment in thread.thread.replies"></div>-->
-        <!--</div>-->
-    <!--</div>-->
 
-    <thread-tag info="thread.thread"></thread-tag>
-
+<div class="container" ng-controller="error">
+    <div class=""></div>
 </div>
+
+
 </body>
 <!-- libraries -->
 <script src="scripts/angular.js" ></script>
 <script src="scripts/angular-route.js" ></script>
 <script src="app/app.js" ></script>
 <script src="app/dirPagination.js"></script>
-<script src="app/data.js"></script>
 <script src="app/isAuth.factory.js"></script>
+<script src="app/data.js"></script>
 <script src="app/thread.directive.js"></script>
-<script src="app/comment.directive.js"></script>
 <script src="app/authenticator.js"></script>
 <script src="app/controller.js" ></script>
 <script src="app/thread.controller.js"></script>
-<!--<script src="app/home.controller.js"></script>-->
+<script src="app/home.controller.js"></script>
 <script src="app/config.js"></script>
+
 </html>

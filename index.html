@@ -14,10 +14,10 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="." target="_self">Forum</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li><a>stuff</a></li>
-                <li><a>stuff2</a></li>
-            </ul>
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a>stuff</a></li>-->
+                <!--<li><a>stuff2</a></li>-->
+            <!--</ul>-->
 
             <form ng-if="!authenticated" class="navbar-form navbar-right" action="api/login.php" method="post">
                 <div class="form-group">
@@ -34,26 +34,55 @@
             </form>
         </div>
     </nav>
+
+
     <div class="container" ng-controller="home as home">
+        <div class="alert-danger" ng-if="home.isError"><strong>{{home.error}}</strong></div>
         <h1>home</h1>
-        <div class="panel panel-default" ng-repeat="thread in home.threads">
-            <div class="panel-heading">
-                <a ng-href="thread?id={{ thread.id }}">{{thread.name}}</a>
+        <div class="col-md-9">
+            <div class="panel panel-info" dir-paginate="thread in home.threads | itemsPerPage: 10" total-items="home.numResults" >
+                <div class="panel-heading">
+                    <a ng-href="thread?id={{ thread.id }}">{{thread.name}}</a>
+                    <span class="pull-right">Posted on {{thread.created | date: "M-d-YYYY"}} by {{thread.username}}</span>
+                </div>
+                <div class="panel-body">{{thread.content}}</div>
+                <div class="panel-footer" ng-if="$root.authenticated">
+                    <form class="form-inline" action="api/createComment.php" method="post">
+                        <div class="form-group form">
+                            <input type="text" class="form-control" name="content" placeholder="comment...">
+                            <input type="submit" name="submit" value="post" class="btn btn-default" >
+                            <input type="hidden" ng-value="thread.id" name="reply_to" >
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="panel-body">{{thread.content}}</div>
+            <dir-pagination-controls on-page-change="home.onPageChange(newPageNumber)" ></dir-pagination-controls>
+        </div>
+        <div class="col-md-3">
+            <h3>Create Thread</h3>
+            <form id="createThread" name="createThread" action="api/createThread.php" method="post" ng-if="authenticated">
+                <div class="form-group">
+                    <input class="form-control" name="name" type="text" placeholder="title">
+                    <textarea class="form-control" name="content" form="createThread" placeholder="body"></textarea>
+                    <input type="submit" class="btn btn-default" name="submit" value="create" >
+                </div>
+            </form>
+            <p ng-if="!authenticated">Log in to post or comment, or <a href="createAccount.html">create an account</a></p>
         </div>
 
     </div>
 </body>
-    <!-- libraries -->
-    <script src="scripts/angular.js" ></script>
-    <script src="scripts/angular-route.js" ></script>
-    <script src="app/app.js" ></script>
-    <script src="app/data.js"></script>
-    <script src="app/thread.directive.js"></script>
-    <script src="app/authenticator.js"></script>
-    <script src="app/controller.js" ></script>
-    <script src="app/thread.controller.js"></script>
-    <script src="app/home.controller.js"></script>
-    <script src="app/config.js"></script>
+<!-- libraries -->
+<script src="scripts/angular.js" ></script>
+<script src="scripts/angular-route.js" ></script>
+<script src="app/app.js" ></script>
+<script src="app/dirPagination.js"></script>
+<script src="app/isAuth.factory.js"></script>
+<script src="app/data.js"></script>
+<script src="app/thread.directive.js"></script>
+<script src="app/authenticator.js"></script>
+<script src="app/controller.js" ></script>
+<script src="app/thread.controller.js"></script>
+<script src="app/home.controller.js"></script>
+<script src="app/config.js"></script>
 </html>

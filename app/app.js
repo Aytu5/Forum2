@@ -5,5 +5,5 @@
     'use strict';
 
     angular
-        .module('forum', ['ngRoute']);
+        .module('forum', ['ngRoute', 'angularUtils.directives.dirPagination']);
 })();

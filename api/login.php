@@ -12,6 +12,7 @@
 
     if(!isset($_POST["password"]) || !isset($_POST["username"])){
         echo "error :(";
+        header("Location: http://classdb.it.mtu.edu/~ajdavid/HW9/Forum2/loginForm");
         die();
     }
 
@@ -29,6 +30,7 @@
     $resultSet = $stmnt->fetchAll();
     if(sizeof($resultSet) != 1){
         echo "account does not exist or password is incorrect";
+        header("Location: http://classdb.it.mtu.edu/~ajdavid/HW9/Forum2/?error=Invalid login credentials");
         //$conn->rollBack();
         die();
     }
@@ -41,5 +43,5 @@
         header('Location: http://classdb.it.mtu.edu/~ajdavid/HW9/Forum2/');
     }else{
         echo "login failed";
-        header('Location: http://classdb.it.mtu.edu/~ajdavid/HW9/Forum2/loginForm');
+        header("Location: http://classdb.it.mtu.edu/~ajdavid/HW9/Forum2/?error=Invalid login credentials");
     }

@@ -345,52 +345,64 @@ account_number</columns>
       <column id="102" parent="18" name="created">
         <data-type>datetime</data-type>
       </column>
-      <key id="103" parent="18" name="PRIMARY">
+      <column id="103" parent="18" name="content">
+        <data-type>text</data-type>
+      </column>
+      <column id="104" parent="18" name="reply_to">
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="105" parent="18" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="104" parent="18" name="threads_ibfk_1">
+      <foreign-key id="106" parent="18" name="threads_ibfk_1">
+        <columns>reply_to</columns>
+        <ref-key>PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="107" parent="18" name="threads_ibfk_2">
         <columns>username</columns>
         <ref-key>users.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="105" parent="19" name="acc_num">
+      <column id="108" parent="19" name="acc_num">
         <data-type>varchar(4)</data-type>
       </column>
-      <column id="106" parent="19" name="balance">
+      <column id="109" parent="19" name="balance">
         <data-type>int(11)</data-type>
       </column>
-      <column id="107" parent="20" name="username">
+      <column id="110" parent="20" name="username">
         <mandatory>1</mandatory>
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="108" parent="20" name="avatar">
+      <column id="111" parent="20" name="avatar">
         <data-type>blob</data-type>
       </column>
-      <column id="109" parent="20" name="passwd">
+      <column id="112" parent="20" name="passwd">
         <data-type>text</data-type>
       </column>
-      <column id="110" parent="20" name="salt">
+      <column id="113" parent="20" name="salt">
         <data-type>text</data-type>
       </column>
-      <key id="111" parent="20" name="PRIMARY">
+      <key id="114" parent="20" name="PRIMARY">
         <columns>username</columns>
         <primary>1</primary>
       </key>
-      <argument id="112" parent="21" name="id">
+      <argument id="115" parent="21" name="id">
         <direction>IN</direction>
         <data-type>char(10)</data-type>
       </argument>
-      <argument id="113" parent="21" name="course_id">
+      <argument id="116" parent="21" name="course_id">
         <direction>IN</direction>
         <data-type>char(10)</data-type>
       </argument>
-      <argument id="114" parent="22">
+      <argument id="117" parent="22">
         <direction>RETURN</direction>
         <data-type>int(11)</data-type>
       </argument>
-      <argument id="115" parent="22" name="c_id">
+      <argument id="118" parent="22" name="c_id">
         <direction>IN</direction>
         <data-type>char(10)</data-type>
       </argument>

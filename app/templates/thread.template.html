@@ -1,7 +1,14 @@
-<div class="panel panel-default">
-    <div class="panel-heading">{{ info.name }}</div>
+<div class="panel panel-info">
+    <div style="height: 41px;" class="panel-heading clearfix">{{ info.name }} &nbsp;<span class="pull-right clearfix">{{info.username}}</span></div>
     <div class="panel-body">{{ info.content }}</div>
     <div class="panel-footer">
         <comment ng-repeat="reply in info.replies" info="reply"></comment>
+        <form class="form-inline" action="api/createComment.php" method="post" ng-if="$root.authenticated">
+            <div class="form-group form">
+                <input type="text" class="form-control" name="content" placeholder="comment...">
+                <input type="submit" name="submit" value="post" class="btn btn-default" >
+                <input type="hidden" ng-value="info.id" name="reply_to" >
+            </div>
+        </form>
     </div>
 </div>

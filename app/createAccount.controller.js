@@ -5,8 +5,17 @@ angular
     .module("forum")
     .controller("createAccount", createAccount);
 
-createAccount.$inject = [];
+createAccount.$inject = ['$location'];
 
-function createAccount(){
+function createAccount($location){
     var vm = this;
+    vm.isError = false;
+
+    if("error" in $location.search()){
+        vm.error = decodeURI($location.search().error);
+        vm.isError = true;
+    }
+
+    console.log(vm.isError);
+    console.log(vm.error);
 }
